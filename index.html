@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symbolic Society — immagini composte, numerate, certificate</title>
+<meta name="description" content="Elaborazioni di immagine e suono di Lorenzo Brusci: catalogo numerato, lavori su commissione per privati, animali e aziende, certificato di autenticità.">
+<link rel="alternate" hreflang="it" href="https://symbolicsociety.com/">
+<link rel="alternate" hreflang="en" href="https://symbolicsociety.com/en/">
+<link rel="preload" href="fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Symbolic Society</a>
+    <nav aria-label="Sezioni">
+      <a href="#catalogo">Catalogo</a>
+      <a href="#elabora">La tua immagine</a>
+      <a href="#galleria">Galleria</a>
+      <a href="#pet">Animali</a>
+      <a href="#aziende">Aziende</a>
+      <a href="#certificato">Certificato</a>
+      <a href="en/" hreflang="en" lang="en">English</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>Quanto lontano vuoi che vada la tua immagine?</h1>
+      <p class="lead">Mandi una fotografia, scegli a quale distanza dalla fonte portarla. Il prezzo segue la distanza: più l’immagine si allontana, più composizione c’è, e più alto è il livello di lavoro.</p>
+      <p class="lead">Ogni elaborazione su una tua foto è un esemplare unico. Le opere del catalogo hanno una tiratura massima di cinque.</p>
+      <p><a class="btn" href="#elabora" id="heroCta">Invia la tua immagine</a> &nbsp; <a class="btn ghost" href="#catalogo">Sfoglia il catalogo</a></p>
+    </div>
+
+    <div class="dial">
+      <div class="frame" id="frame"></div>
+      <p class="cap" id="demoCap"></p>
+      <label for="level">Livello di astrazione</label>
+      <input type="range" id="level" min="0" max="3" step="1" value="0" aria-describedby="lvlDesc">
+      <div class="steps" id="steps" aria-hidden="true"></div>
+      <div class="readout">
+        <div class="price" id="lvlPrice"></div>
+        <p id="lvlDesc"></p>
+      </div>
+      <p class="demo-note">Dimostrazione con la serie Fire Fears: lo stesso paesaggio portato sempre più lontano da sé. Il risultato sulla tua fotografia dipende dalla fotografia.</p>
+    </div>
+  </div>
+</div>
+
+<section id="catalogo">
+  <div class="wrap">
+    <h2>Catalogo</h2>
+    <p class="lead">Le opere pubblicate su Instagram, con il loro numero. Se ne hai visto una sul profilo, cerca il codice che compare nella didascalia (per esempio SS-0147).</p>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Cerca per codice, titolo o serie" aria-label="Cerca nel catalogo">
+      <select id="fSerie" aria-label="Serie"><option value="">Tutte le serie</option></select>
+      <select id="fRegime" aria-label="Tiratura">
+        <option value="">Tutte le tirature</option>
+        <option value="unica">Solo opere uniche</option>
+        <option value="tiratura">Solo con tiratura</option>
+        <option value="disp">Solo disponibili</option>
+      </select>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>Nessuna opera corrisponde alla ricerca. Prova con un altro codice o togli un filtro.</div>
+    <p class="small" style="margin-top:28px">Nelle opere a tiratura il prezzo sale a ogni esemplare venduto. Il numero d’edizione (per esempio 2/5) è scritto sul certificato.</p>
+  </div>
+</section>
+
+<section id="elabora">
+  <div class="wrap cols">
+    <div>
+      <h2>La tua immagine</h2>
+      <p>Invia una fotografia: ricevi un’anteprima gratuita a bassa risoluzione con filigrana, scegli il livello e paghi solo se ti convince.</p>
+      <table>
+        <thead><tr><th>Livello</th><th>Cosa ricevi</th><th>Prezzo</th></tr></thead>
+        <tbody id="tbl"></tbody>
+      </table>
+      <p class="small">Cinque elaborazioni insieme costano il 15% in meno. Stampe su carta e altri materiali si aggiungono da 25 €. I livelli III e IV sono lavorati a mano e disponibili in numero limitato ogni settimana.</p>
+      <p class="small">Ogni lavoro su foto personale resta un esemplare unico: non viene riprodotto per altri e non è mostrato senza il tuo consenso.</p>
+    </div>
+    <div>
+      <form name="elaborazione" method="POST" data-netlify="true" netlify-honeypot="bot" enctype="multipart/form-data" id="fElab">
+        <input type="hidden" name="form-name" value="elaborazione">
+        <input type="hidden" name="lingua" value="it">
+        <p class="hp"><label>Non compilare <input name="bot"></label></p>
+        <label>Nome <input name="nome" required autocomplete="name"></label>
+        <label>Email <input type="email" name="email" required autocomplete="email"></label>
+        <label>Cosa invii
+          <select name="soggetto" id="soggetto">
+            <option>Una fotografia personale</option>
+            <option>Il mio animale</option>
+            <option>Altro</option>
+          </select>
+        </label>
+        <label>Livello di partenza
+          <select name="livello" id="livelloSel"></select>
+        </label>
+        <label>Immagine <span class="h">JPG o PNG, fino a 10 MB</span>
+          <input type="file" name="immagine" accept="image/jpeg,image/png" required>
+        </label>
+        <label>Note <span class="h">facoltative</span><textarea name="note" rows="3"></textarea></label>
+        <label class="chk"><input type="checkbox" name="diritti" required> Dichiaro di avere titolo sull’immagine e sulle persone ritratte.</label>
+        <label class="chk"><input type="checkbox" name="privacy" required> Acconsento al trattamento dei dati per rispondere a questa richiesta.</label>
+        <button class="btn" type="submit">Richiedi l’anteprima gratuita</button>
+        <div class="ok" role="status">Richiesta inviata. Ti scriviamo con l’anteprima appena pronta.</div>
+        <div class="err" role="alert">Invio non riuscito. Riprova tra poco o scrivici a bruscilorenzo@gmail.com.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="galleria">
+  <div class="wrap cols">
+    <div>
+      <h2>Invia una galleria</h2>
+      <p>Un numero qualsiasi di foto e di video, da aggiungere anche in più volte: un archivio, una serie di scatti, i ricordi di un periodo. Scegli i file e il livello di partenza, e ricevi un’anteprima.</p>
+      <p class="small">Se il peso totale resta sotto i 7 MB, i file partono insieme al modulo. Per gallerie più pesanti, e per i video, parte l’elenco e ti scriviamo con un link privato per il caricamento; oppure incolla tu un link (WeTransfer, Drive, Dropbox).</p>
+      <p class="small">Se nelle immagini compaiono persone riconoscibili serve il loro consenso. Il lavoro resta riservato e non viene mostrato senza il tuo consenso.</p>
+    </div>
+    <div>
+      <form name="galleria" method="POST" data-netlify="true" netlify-honeypot="bot" enctype="multipart/form-data" id="galForm">
+        <input type="hidden" name="form-name" value="galleria">
+        <input type="hidden" name="lingua" value="it">
+        <input type="hidden" name="riepilogo" id="galSummary">
+        <input type="hidden" name="n_foto" id="galNF">
+        <input type="hidden" name="n_video" id="galNV">
+        <input type="hidden" name="peso_totale_mb" id="galMB">
+        <input type="hidden" name="invio_file" id="galMode">
+        <p class="hp"><label>Non compilare <input name="bot"></label></p>
+        <label>Nome <input name="nome" required autocomplete="name"></label>
+        <label>Email <input type="email" name="email" required autocomplete="email"></label>
+        <label>Che tipo di galleria è
+          <select name="tipo">
+            <option>Fotografie personali</option>
+            <option>Il mio animale</option>
+            <option>Un archivio aziendale</option>
+            <option>Altro</option>
+          </select>
+        </label>
+        <label>Livello di partenza
+          <select name="livello" id="galLevel"></select>
+        </label>
+        <label class="drop" id="galDrop">
+          <input type="file" name="file" id="galInput" multiple accept="image/*,video/*">
+          <strong>Trascina qui foto e video, oppure scegli i file</strong>
+          <span>JPG, PNG, HEIC, MP4, MOV. Aggiungine quanti vuoi, anche in più volte.</span>
+        </label>
+        <div id="galCount" class="gcount" aria-live="polite"></div>
+        <ul id="galList" class="files"></ul>
+        <div id="galEstimate" class="small" aria-live="polite"></div>
+        <label>Link alla galleria <span class="h">facoltativo, per file molto pesanti</span><input type="url" name="link" placeholder="https://"></label>
+        <label>Note <span class="h">facoltative</span><textarea name="note" rows="3"></textarea></label>
+        <label class="chk"><input type="checkbox" name="diritti" required> Dichiaro di avere titolo sull’immagine e sulle persone ritratte.</label>
+        <label class="chk"><input type="checkbox" name="privacy" required> Acconsento al trattamento dei dati per rispondere a questa richiesta.</label>
+        <button class="btn" type="submit">Invia la galleria</button>
+        <div class="ok" role="status"></div>
+        <div class="err" role="alert"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="pet">
+  <div class="wrap cols">
+    <div>
+      <h2>Animali</h2>
+      <p class="lead">Il ritratto di un animale che hai accanto, o che hai perso, portato a una distanza dalla fotografia che scegli tu.</p>
+      <p>Il flusso è lo stesso della tua immagine, con una possibilità in più: la firma sonora dell’animale (un verso, il passo, il respiro) composta in un loop di trenta secondi.</p>
+      <p><a class="btn" href="#elabora" data-pet>Invia la foto del tuo animale</a></p>
+    </div>
+    <div>
+      <table>
+        <tbody>
+          <tr><td>Ritratto, livelli II e III</td><td class="pr">49–75 €</td></tr>
+          <tr><td>Ritratto con firma sonora</td><td class="pr">120 €</td></tr>
+          <tr><td>Edizione in memoria: stampa su materiale pregiato con un breve audio</td><td class="pr">da 180 €</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Ogni ritratto è un esemplare unico.</p>
+    </div>
+  </div>
+</section>
+
+<section id="aziende">
+  <div class="wrap">
+    <h2>Aziende e agenzie</h2>
+    <p class="lead">Un linguaggio visivo e sonoro coerente, costruito sul vostro materiale e consegnato con una licenza d’uso chiara.</p>
+    <div class="cols three" style="margin:32px 0">
+      <div><h3>Copertine e artwork</h3><p class="small" style="margin-top:8px">Per musicisti, etichette e autori, consegna in 48 ore. Da 150 €.</p></div>
+      <div><h3>Archivio fotografico</h3><p class="small" style="margin-top:8px">Un centinaio di immagini del vostro archivio elaborate con un linguaggio unico, per una mostra o per i canali social. Da 2.500 €, licenza d’uso a parte.</p></div>
+      <div><h3>Identità generativa</h3><p class="small" style="margin-top:8px">Un sistema visivo e sonoro che produce varianti coerenti con il marchio, con licenza annuale. Da 5.000 €. Installazioni e spazi su preventivo.</p></div>
+    </div>
+    <form name="aziende" method="POST" data-netlify="true" netlify-honeypot="bot" id="fAz">
+      <input type="hidden" name="form-name" value="aziende">
+      <input type="hidden" name="lingua" value="it">
+      <p class="hp"><label>Non compilare <input name="bot"></label></p>
+      <label>Azienda o agenzia <input name="azienda" required></label>
+      <label>Referente <input name="nome" required autocomplete="name"></label>
+      <label>Email <input type="email" name="email" required autocomplete="email"></label>
+      <label>Di cosa avete bisogno <span class="h">materiale disponibile, scopo, tempi</span><textarea name="richiesta" rows="4" required></textarea></label>
+      <label class="chk"><input type="checkbox" name="privacy" required> Acconsento al trattamento dei dati per rispondere a questa richiesta.</label>
+      <button class="btn" type="submit">Richiedi un preventivo</button>
+      <div class="ok" role="status">Richiesta inviata. Vi rispondiamo con una proposta.</div>
+      <div class="err" role="alert">Invio non riuscito. Riprova tra poco o scrivici a bruscilorenzo@gmail.com.</div>
+    </form>
+  </div>
+</section>
+
+<section id="certificato">
+  <div class="wrap cols">
+    <div>
+      <h2>Il certificato</h2>
+      <p class="lead">Ogni opera e ogni elaborazione viene consegnata con un atto che dice cosa è stato venduto, a chi, in quale esemplare.</p>
+      <p>Per le opere di catalogo può essere registrato anche su blockchain, su richiesta dell’acquirente. Per le elaborazioni su foto personali e per i ritratti di animali il certificato è un documento numerato e firmato, senza bisogno di un portafoglio digitale.</p>
+    </div>
+    <div>
+      <table>
+        <tbody>
+          <tr><th>Contiene</th><td>autore, titolo, numero d’opera, numero d’edizione (per esempio 2/5), data, formato</td></tr>
+          <tr><th>Verifica</th><td>impronta digitale del file, controllabile su questa pagina</td></tr>
+          <tr><th>Licenza</th><td>usi consentiti e non consentiti, scritti in chiaro</td></tr>
+          <tr><th>Rivendita</th><td>regolata a parte, non esclusa</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Symbolic Society · Lorenzo Brusci · Firenze</p>
+    <p><a href="mailto:bruscilorenzo@gmail.com">bruscilorenzo@gmail.com</a> · <a href="https://www.instagram.com/lorenzo_brusci">Instagram @lorenzo_brusci</a></p>
+  </div>
+</footer>
+
+<dialog id="dlg">
+  <button class="close" id="dlgClose" aria-label="Chiudi">×</button>
+  <h3 id="dlgTitle"></h3>
+  <p class="small" id="dlgSub"></p>
+  <form name="richiesta-opera" method="POST" data-netlify="true" netlify-honeypot="bot" id="fOp">
+    <input type="hidden" name="form-name" value="richiesta-opera">
+    <input type="hidden" name="lingua" value="it">
+    <input type="hidden" name="opera" id="opCod">
+    <p class="hp"><label>Non compilare <input name="bot"></label></p>
+    <label>Nome <input name="nome" required autocomplete="name"></label>
+    <label>Email <input type="email" name="email" required autocomplete="email"></label>
+    <label>Formato
+      <select name="formato">
+        <option>Digitale</option>
+        <option>Stampa su carta</option>
+        <option>Stampa su altro materiale</option>
+      </select>
+    </label>
+    <label class="chk"><input type="checkbox" name="token"> Voglio anche il certificato registrato su blockchain.</label>
+    <label>Note <span class="h">facoltative</span><textarea name="note" rows="2"></textarea></label>
+    <label class="chk"><input type="checkbox" name="privacy" required> Acconsento al trattamento dei dati per rispondere a questa richiesta.</label>
+    <button class="btn" type="submit">Invia la richiesta</button>
+    <div class="ok" role="status">Richiesta inviata. Ti scriviamo con prezzo definitivo e modalità di pagamento.</div>
+    <div class="err" role="alert">Invio non riuscito. Riprova tra poco o scrivici a bruscilorenzo@gmail.com.</div>
+  </form>
+</dialog>
+
+<script>
+window.SITE = {"lang": "it", "base": "", "levels": [{"nome": "Soglia", "prezzo": 29, "cosa": "Immagine elaborata, ancora riconoscibile.", "code": "SS-0001"}, {"nome": "Trasposta", "prezzo": 49, "cosa": "Linguaggio visivo mio, il soggetto resta leggibile.", "code": "SS-0004"}, {"nome": "Dissolta", "prezzo": 75, "cosa": "Il soggetto quasi scompare, resta la struttura.", "code": "SS-0012"}, {"nome": "Composizione", "prezzo": 120, "cosa": "Livello III più un loop sonoro generativo di 30 secondi.", "code": "SS-0020"}], "t": {demoAlt:c=>`Fire Fears {code}`.replace('{code}',c),demoCap:(c,r)=>`Fire Fears, {code}. Livello {rom}.`.replace('{code}',c).replace('{rom}',r),dlgTitle:c=>`Richiedi {code}`.replace('{code}',c),dlgSub:(titolo,unica,n,max,prezzo)=>(unica?`{titolo}, opera unica, {prezzo}.`:`{titolo}, edizione {n}/{max}, {prezzo}.`).replace('{titolo}',titolo).replace('{n}',n).replace('{max}',max).replace('{prezzo}',prezzo||`prezzo su richiesta`),"gal": {"none": "Nessun file selezionato.", "photo1": "{n} foto", "photoN": "{n} foto", "video1": "{n} video", "videoN": "{n} video", "est": "Stima indicativa per le foto: {amount}{disc}. I video si valutano a parte.", "disc": " (con lo sconto del 15% da cinque foto in su)", "bulk": " Per archivi di oltre 50 immagini prepariamo un preventivo dedicato.", "need": "Aggiungi almeno un file oppure incolla un link alla galleria.", "okFiles": "Galleria ricevuta, file compresi. Ti scriviamo con l’anteprima.", "okLink": "Richiesta ricevuta con il link alla galleria. Ti scriviamo con l’anteprima.", "okList": "Abbiamo ricevuto l’elenco dei file. Ti scriviamo con un link privato per caricarli.", "remove": "Rimuovi", "many": "Hai selezionato molti file: sopra i 300 conviene un unico archivio compresso o un link.", "err": "Invio non riuscito. Riprova tra poco o scrivici a bruscilorenzo@gmail.com.", "videoTag": "Video"}, "unique": "Opera unica", "soldOut": "Esaurita", "edition": "Edizione", "request": "Richiedi", "unavailable": "Non disponibile", "onRequest": "Prezzo su richiesta", "igPost": "Vedi il post su Instagram", "dontKnow": "Non so, consigliami tu", "petValue": "Il mio animale", "tech": {}}};
+</script>
+<script src="app.js"></script>
+</body>
+</html>
+<!-- rebuild 1794077224 -->

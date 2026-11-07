@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Symbolic Society — composed images, numbered and certified</title>
+<meta name="description" content="Image and sound elaborations by Lorenzo Brusci: a numbered catalogue, commissioned work for individuals, pets and companies, and certificates of authenticity.">
+<link rel="alternate" hreflang="it" href="https://symbolicsociety.com/">
+<link rel="alternate" hreflang="en" href="https://symbolicsociety.com/en/">
+<link rel="preload" href="../fonts/space-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Symbolic Society</a>
+    <nav aria-label="Sections">
+      <a href="#catalogo">Catalogue</a>
+      <a href="#elabora">Your image</a>
+      <a href="#galleria">Gallery</a>
+      <a href="#pet">Pets</a>
+      <a href="#aziende">Companies</a>
+      <a href="#certificato">Certificate</a>
+      <a href="../" hreflang="it" lang="it">Italiano</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <h1>How far do you want your image to travel?</h1>
+      <p class="lead">Send a photograph and choose how far from its source it should go. The price follows the distance: the further the image moves away, the more composition it contains, and the higher the level of work.</p>
+      <p class="lead">Every elaboration of your own photo is a unique piece. Works in the catalogue have an edition of five at most.</p>
+      <p><a class="btn" href="#elabora" id="heroCta">Send your image</a> &nbsp; <a class="btn ghost" href="#catalogo">Browse the catalogue</a></p>
+    </div>
+
+    <div class="dial">
+      <div class="frame" id="frame"></div>
+      <p class="cap" id="demoCap"></p>
+      <label for="level">Level of abstraction</label>
+      <input type="range" id="level" min="0" max="3" step="1" value="0" aria-describedby="lvlDesc">
+      <div class="steps" id="steps" aria-hidden="true"></div>
+      <div class="readout">
+        <div class="price" id="lvlPrice"></div>
+        <p id="lvlDesc"></p>
+      </div>
+      <p class="demo-note">Demonstration with the series Fire Fears: the same landscape taken further and further from itself. The result on your photograph depends on the photograph.</p>
+    </div>
+  </div>
+</div>
+
+<section id="catalogo">
+  <div class="wrap">
+    <h2>Catalogue</h2>
+    <p class="lead">The works published on Instagram, each with its number. If you saw one on the profile, look for the code in the caption (for example SS-0147).</p>
+    <div class="tools">
+      <input type="search" id="q" placeholder="Search by code, title or series" aria-label="Search the catalogue">
+      <select id="fSerie" aria-label="Series"><option value="">All series</option></select>
+      <select id="fRegime" aria-label="Edition">
+        <option value="">All editions</option>
+        <option value="unica">Unique works only</option>
+        <option value="tiratura">Editioned works only</option>
+        <option value="disp">Available only</option>
+      </select>
+    </div>
+    <div class="grid" id="grid"></div>
+    <div class="empty" id="empty" hidden>No work matches your search. Try another code or remove a filter.</div>
+    <p class="small" style="margin-top:28px">For editioned works the price rises with each copy sold. The edition number (for example 2/5) is written on the certificate.</p>
+  </div>
+</section>
+
+<section id="elabora">
+  <div class="wrap cols">
+    <div>
+      <h2>Your image</h2>
+      <p>Send a photograph: you receive a free low-resolution preview with a watermark, choose the level, and pay only if you are convinced.</p>
+      <table>
+        <thead><tr><th>Level</th><th>What you receive</th><th>Price</th></tr></thead>
+        <tbody id="tbl"></tbody>
+      </table>
+      <p class="small">Five elaborations together cost 15% less. Prints on paper and other materials start from €25 extra. Levels III and IV are worked by hand and available in limited numbers each week.</p>
+      <p class="small">Every work on a personal photo remains a unique piece: it is not reproduced for anyone else and is not shown without your consent.</p>
+    </div>
+    <div>
+      <form name="elaborazione" method="POST" data-netlify="true" netlify-honeypot="bot" enctype="multipart/form-data" id="fElab">
+        <input type="hidden" name="form-name" value="elaborazione">
+        <input type="hidden" name="lingua" value="en">
+        <p class="hp"><label>Do not fill in <input name="bot"></label></p>
+        <label>Name <input name="nome" required autocomplete="name"></label>
+        <label>Email <input type="email" name="email" required autocomplete="email"></label>
+        <label>What you are sending
+          <select name="soggetto" id="soggetto">
+            <option>A personal photograph</option>
+            <option>My pet</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label>Starting level
+          <select name="livello" id="livelloSel"></select>
+        </label>
+        <label>Image <span class="h">JPG or PNG, up to 10 MB</span>
+          <input type="file" name="immagine" accept="image/jpeg,image/png" required>
+        </label>
+        <label>Notes <span class="h">optional</span><textarea name="note" rows="3"></textarea></label>
+        <label class="chk"><input type="checkbox" name="diritti" required> I declare that I hold the rights to the image and to the people in it.</label>
+        <label class="chk"><input type="checkbox" name="privacy" required> I consent to the processing of my data in order to answer this request.</label>
+        <button class="btn" type="submit">Request the free preview</button>
+        <div class="ok" role="status">Request sent. We will write to you with the preview as soon as it is ready.</div>
+        <div class="err" role="alert">Sending failed. Please try again shortly or write to us at bruscilorenzo@gmail.com.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="galleria">
+  <div class="wrap cols">
+    <div>
+      <h2>Send a gallery</h2>
+      <p>Any number of photos and videos, which you can add in several rounds: an archive, a series of shots, the memories of a period. Choose the files and the starting level, and you receive a preview.</p>
+      <p class="small">If the total size stays under 7 MB, the files travel with the form. For heavier galleries, and for videos, the list is sent and we write back with a private upload link; or paste a link yourself (WeTransfer, Drive, Dropbox).</p>
+      <p class="small">If recognisable people appear in the images, their consent is needed. The work remains confidential and is not shown without your consent.</p>
+    </div>
+    <div>
+      <form name="galleria" method="POST" data-netlify="true" netlify-honeypot="bot" enctype="multipart/form-data" id="galForm">
+        <input type="hidden" name="form-name" value="galleria">
+        <input type="hidden" name="lingua" value="en">
+        <input type="hidden" name="riepilogo" id="galSummary">
+        <input type="hidden" name="n_foto" id="galNF">
+        <input type="hidden" name="n_video" id="galNV">
+        <input type="hidden" name="peso_totale_mb" id="galMB">
+        <input type="hidden" name="invio_file" id="galMode">
+        <p class="hp"><label>Do not fill in <input name="bot"></label></p>
+        <label>Name <input name="nome" required autocomplete="name"></label>
+        <label>Email <input type="email" name="email" required autocomplete="email"></label>
+        <label>What kind of gallery is it
+          <select name="tipo">
+            <option>Personal photographs</option>
+            <option>My pet</option>
+            <option>A company archive</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label>Starting level
+          <select name="livello" id="galLevel"></select>
+        </label>
+        <label class="drop" id="galDrop">
+          <input type="file" name="file" id="galInput" multiple accept="image/*,video/*">
+          <strong>Drop photos and videos here, or choose files</strong>
+          <span>JPG, PNG, HEIC, MP4, MOV. Add as many as you like, in as many rounds as you like.</span>
+        </label>
+        <div id="galCount" class="gcount" aria-live="polite"></div>
+        <ul id="galList" class="files"></ul>
+        <div id="galEstimate" class="small" aria-live="polite"></div>
+        <label>Link to the gallery <span class="h">optional, for very heavy files</span><input type="url" name="link" placeholder="https://"></label>
+        <label>Notes <span class="h">optional</span><textarea name="note" rows="3"></textarea></label>
+        <label class="chk"><input type="checkbox" name="diritti" required> I declare that I hold the rights to the image and to the people in it.</label>
+        <label class="chk"><input type="checkbox" name="privacy" required> I consent to the processing of my data in order to answer this request.</label>
+        <button class="btn" type="submit">Send the gallery</button>
+        <div class="ok" role="status"></div>
+        <div class="err" role="alert"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="pet">
+  <div class="wrap cols">
+    <div>
+      <h2>Pets</h2>
+      <p class="lead">The portrait of an animal who is beside you, or whom you have lost, taken as far from the photograph as you choose.</p>
+      <p>The process is the same as for your own image, with one more possibility: the animal’s sound signature (a call, a footstep, a breath) composed into a thirty-second loop.</p>
+      <p><a class="btn" href="#elabora" data-pet>Send a photo of your pet</a></p>
+    </div>
+    <div>
+      <table>
+        <tbody>
+          <tr><td>Portrait, levels II and III</td><td class="pr">49–75 €</td></tr>
+          <tr><td>Portrait with sound signature</td><td class="pr">120 €</td></tr>
+          <tr><td>Memorial edition: print on fine material with a short audio piece</td><td class="pr">from €180</td></tr>
+        </tbody>
+      </table>
+      <p class="small">Every portrait is a unique piece.</p>
+    </div>
+  </div>
+</section>
+
+<section id="aziende">
+  <div class="wrap">
+    <h2>Companies and agencies</h2>
+    <p class="lead">A coherent visual and sound language, built on your material and delivered with a clear licence of use.</p>
+    <div class="cols three" style="margin:32px 0">
+      <div><h3>Covers and artwork</h3><p class="small" style="margin-top:8px">For musicians, labels and authors, delivered in 48 hours. From €150.</p></div>
+      <div><h3>Photo archive</h3><p class="small" style="margin-top:8px">A hundred images from your archive elaborated in one distinctive language, for an exhibition or for social channels. From €2,500, licence of use separate.</p></div>
+      <div><h3>Generative identity</h3><p class="small" style="margin-top:8px">A visual and sound system that produces variations consistent with the brand, with an annual licence. From €5,000. Installations and spaces on quotation.</p></div>
+    </div>
+    <form name="aziende" method="POST" data-netlify="true" netlify-honeypot="bot" id="fAz">
+      <input type="hidden" name="form-name" value="aziende">
+      <input type="hidden" name="lingua" value="en">
+      <p class="hp"><label>Do not fill in <input name="bot"></label></p>
+      <label>Company or agency <input name="azienda" required></label>
+      <label>Contact person <input name="nome" required autocomplete="name"></label>
+      <label>Email <input type="email" name="email" required autocomplete="email"></label>
+      <label>What you need <span class="h">available material, purpose, timing</span><textarea name="richiesta" rows="4" required></textarea></label>
+      <label class="chk"><input type="checkbox" name="privacy" required> I consent to the processing of my data in order to answer this request.</label>
+      <button class="btn" type="submit">Request a quotation</button>
+      <div class="ok" role="status">Request sent. We will reply with a proposal.</div>
+      <div class="err" role="alert">Sending failed. Please try again shortly or write to us at bruscilorenzo@gmail.com.</div>
+    </form>
+  </div>
+</section>
+
+<section id="certificato">
+  <div class="wrap cols">
+    <div>
+      <h2>The certificate</h2>
+      <p class="lead">Every work and every elaboration is delivered with a deed stating what was sold, to whom, and in which copy.</p>
+      <p>For catalogue works it can also be registered on a blockchain, at the buyer’s request. For elaborations of personal photos and for pet portraits the certificate is a numbered, signed document, with no need for a digital wallet.</p>
+    </div>
+    <div>
+      <table>
+        <tbody>
+          <tr><th>Contains</th><td>author, title, work number, edition number (for example 2/5), date, format</td></tr>
+          <tr><th>Verification</th><td>digital fingerprint of the file, which can be checked on this page</td></tr>
+          <tr><th>Licence</th><td>permitted and prohibited uses, written in plain language</td></tr>
+          <tr><th>Resale</th><td>regulated separately, not excluded</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Symbolic Society · Lorenzo Brusci · Florence</p>
+    <p><a href="mailto:bruscilorenzo@gmail.com">bruscilorenzo@gmail.com</a> · <a href="https://www.instagram.com/lorenzo_brusci">Instagram @lorenzo_brusci</a></p>
+  </div>
+</footer>
+
+<dialog id="dlg">
+  <button class="close" id="dlgClose" aria-label="Close">×</button>
+  <h3 id="dlgTitle"></h3>
+  <p class="small" id="dlgSub"></p>
+  <form name="richiesta-opera" method="POST" data-netlify="true" netlify-honeypot="bot" id="fOp">
+    <input type="hidden" name="form-name" value="richiesta-opera">
+    <input type="hidden" name="lingua" value="en">
+    <input type="hidden" name="opera" id="opCod">
+    <p class="hp"><label>Do not fill in <input name="bot"></label></p>
+    <label>Name <input name="nome" required autocomplete="name"></label>
+    <label>Email <input type="email" name="email" required autocomplete="email"></label>
+    <label>Format
+      <select name="formato">
+        <option>Digital</option>
+        <option>Print on paper</option>
+        <option>Print on another material</option>
+      </select>
+    </label>
+    <label class="chk"><input type="checkbox" name="token"> I also want the certificate registered on a blockchain.</label>
+    <label>Notes <span class="h">optional</span><textarea name="note" rows="2"></textarea></label>
+    <label class="chk"><input type="checkbox" name="privacy" required> I consent to the processing of my data in order to answer this request.</label>
+    <button class="btn" type="submit">Send the request</button>
+    <div class="ok" role="status">Request sent. We will write to you with the final price and payment details.</div>
+    <div class="err" role="alert">Sending failed. Please try again shortly or write to us at bruscilorenzo@gmail.com.</div>
+  </form>
+</dialog>
+
+<script>
+window.SITE = {"lang": "en", "base": "../", "levels": [{"nome": "Threshold", "prezzo": 29, "cosa": "Elaborated image, still recognisable.", "code": "SS-0001"}, {"nome": "Transposed", "prezzo": 49, "cosa": "My visual language; the subject stays legible.", "code": "SS-0004"}, {"nome": "Dissolved", "prezzo": 75, "cosa": "The subject almost disappears; the structure remains.", "code": "SS-0012"}, {"nome": "Composition", "prezzo": 120, "cosa": "Level III plus a 30-second generative sound loop.", "code": "SS-0020"}], "t": {demoAlt:c=>`Fire Fears {code}`.replace('{code}',c),demoCap:(c,r)=>`Fire Fears, {code}. Level {rom}.`.replace('{code}',c).replace('{rom}',r),dlgTitle:c=>`Request {code}`.replace('{code}',c),dlgSub:(titolo,unica,n,max,prezzo)=>(unica?`{titolo}, unique work, {prezzo}.`:`{titolo}, edition {n}/{max}, {prezzo}.`).replace('{titolo}',titolo).replace('{n}',n).replace('{max}',max).replace('{prezzo}',prezzo||`price on request`),"gal": {"none": "No files selected.", "photo1": "{n} photo", "photoN": "{n} photos", "video1": "{n} video", "videoN": "{n} videos", "est": "Indicative estimate for the photos: {amount}{disc}. Videos are quoted separately.", "disc": " (with the 15% discount from five photos up)", "bulk": " For archives of more than 50 images we prepare a dedicated quotation.", "need": "Add at least one file or paste a link to the gallery.", "okFiles": "Gallery received, files included. We will write to you with the preview.", "okLink": "Request received with the link to the gallery. We will write to you with the preview.", "okList": "We received the list of files. We will write to you with a private link to upload them.", "remove": "Remove", "many": "You have selected many files: above 300 it is better to send one compressed archive or a link.", "err": "Sending failed. Please try again shortly or write to us at bruscilorenzo@gmail.com.", "videoTag": "Video"}, "unique": "Unique work", "soldOut": "Sold out", "edition": "Edition", "request": "Request", "unavailable": "Unavailable", "onRequest": "Price on request", "igPost": "See the post on Instagram", "dontKnow": "I am not sure, advise me", "petValue": "My pet", "tech": {"Immagine": "Image", "Immagine + loop sonoro": "Image + sound loop", "Video + audio": "Video + audio"}}};
+</script>
+<script src="../app.js"></script>
+</body>
+</html>
